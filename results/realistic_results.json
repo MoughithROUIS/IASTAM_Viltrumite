@@ -1,0 +1,250 @@
+{
+  "network": {
+    "n_satellites": 32,
+    "n_ground": 3,
+    "contact_opportunities": 4888,
+    "horizon_steps": 120,
+    "step_seconds": 30
+  },
+  "baseline": {
+    "Naive (shortest-path, drop)": {
+      "strategy": "Naive (shortest-path, drop)",
+      "delivery_rate": 0.5166666666666667,
+      "avg_latency_s": 124.83870967741936,
+      "transmissions": 203,
+      "data_delivered_mb": 10150.0,
+      "network_utilization": 0.04153027823240589
+    },
+    "CGR-lite (predictive)": {
+      "strategy": "CGR-lite (predictive)",
+      "delivery_rate": 0.9833333333333333,
+      "avg_latency_s": 187.6271186440678,
+      "transmissions": 308,
+      "data_delivered_mb": 15400.0,
+      "network_utilization": 0.0630114566284779
+    },
+    "Epidemic (reactive)": {
+      "strategy": "Epidemic (reactive)",
+      "delivery_rate": 0.65,
+      "avg_latency_s": 436.15384615384613,
+      "transmissions": 933,
+      "data_delivered_mb": 46650.0,
+      "network_utilization": 0.19087561374795417
+    },
+    "Hybrid-Adaptive (ours)": {
+      "strategy": "Hybrid-Adaptive (ours)",
+      "delivery_rate": 0.9,
+      "avg_latency_s": 176.66666666666666,
+      "transmissions": 288,
+      "data_delivered_mb": 14400.0,
+      "network_utilization": 0.058919803600654665,
+      "mode_split": {
+        "cgr": 60,
+        "epidemic": 0
+      }
+    }
+  },
+  "robustness_sweep": {
+    "failure_levels": [
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.4
+    ],
+    "Naive": [
+      {
+        "strategy": "Naive (shortest-path, drop)",
+        "delivery_rate": 0.625,
+        "avg_latency_s": 126,
+        "transmissions": 164,
+        "data_delivered_mb": 8200.0,
+        "network_utilization": 0.03355155482815057
+      },
+      {
+        "strategy": "Naive (shortest-path, drop)",
+        "delivery_rate": 0.3,
+        "avg_latency_s": 112.5,
+        "transmissions": 91,
+        "data_delivered_mb": 4550.0,
+        "network_utilization": 0.018617021276595744
+      },
+      {
+        "strategy": "Naive (shortest-path, drop)",
+        "delivery_rate": 0.125,
+        "avg_latency_s": 66,
+        "transmissions": 42,
+        "data_delivered_mb": 2100.0,
+        "network_utilization": 0.008592471358428805
+      },
+      {
+        "strategy": "Naive (shortest-path, drop)",
+        "delivery_rate": 0.025,
+        "avg_latency_s": 30,
+        "transmissions": 13,
+        "data_delivered_mb": 650.0,
+        "network_utilization": 0.0026595744680851063
+      },
+      {
+        "strategy": "Naive (shortest-path, drop)",
+        "delivery_rate": 0.0,
+        "avg_latency_s": null,
+        "transmissions": 2,
+        "data_delivered_mb": 100.0,
+        "network_utilization": 0.0004091653027823241
+      }
+    ],
+    "CGR-lite": [
+      {
+        "strategy": "CGR-lite (predictive)",
+        "delivery_rate": 0.95,
+        "avg_latency_s": 165.78947368421052,
+        "transmissions": 193,
+        "data_delivered_mb": 9650.0,
+        "network_utilization": 0.039484451718494275
+      },
+      {
+        "strategy": "CGR-lite (predictive)",
+        "delivery_rate": 0.9,
+        "avg_latency_s": 157.5,
+        "transmissions": 162,
+        "data_delivered_mb": 8100.0,
+        "network_utilization": 0.03314238952536825
+      },
+      {
+        "strategy": "CGR-lite (predictive)",
+        "delivery_rate": 0.9,
+        "avg_latency_s": 237.5,
+        "transmissions": 189,
+        "data_delivered_mb": 9450.0,
+        "network_utilization": 0.03866612111292962
+      },
+      {
+        "strategy": "CGR-lite (predictive)",
+        "delivery_rate": 0.975,
+        "avg_latency_s": 296.15384615384613,
+        "transmissions": 213,
+        "data_delivered_mb": 10650.0,
+        "network_utilization": 0.04357610474631751
+      },
+      {
+        "strategy": "CGR-lite (predictive)",
+        "delivery_rate": 0.925,
+        "avg_latency_s": 250.54054054054055,
+        "transmissions": 158,
+        "data_delivered_mb": 7900.0,
+        "network_utilization": 0.032324058919803604
+      }
+    ],
+    "Epidemic": [
+      {
+        "strategy": "Epidemic (reactive)",
+        "delivery_rate": 0.675,
+        "avg_latency_s": 462.22222222222223,
+        "transmissions": 563,
+        "data_delivered_mb": 28150.0,
+        "network_utilization": 0.11518003273322422
+      },
+      {
+        "strategy": "Epidemic (reactive)",
+        "delivery_rate": 0.8,
+        "avg_latency_s": 459.375,
+        "transmissions": 531,
+        "data_delivered_mb": 26550.0,
+        "network_utilization": 0.10863338788870704
+      },
+      {
+        "strategy": "Epidemic (reactive)",
+        "delivery_rate": 0.675,
+        "avg_latency_s": 671.1111111111111,
+        "transmissions": 657,
+        "data_delivered_mb": 32850.0,
+        "network_utilization": 0.13441080196399346
+      },
+      {
+        "strategy": "Epidemic (reactive)",
+        "delivery_rate": 0.7,
+        "avg_latency_s": 572.1428571428571,
+        "transmissions": 574,
+        "data_delivered_mb": 28700.0,
+        "network_utilization": 0.117430441898527
+      },
+      {
+        "strategy": "Epidemic (reactive)",
+        "delivery_rate": 0.775,
+        "avg_latency_s": 566.1290322580645,
+        "transmissions": 661,
+        "data_delivered_mb": 33050.0,
+        "network_utilization": 0.1352291325695581
+      }
+    ],
+    "Hybrid-Adaptive": [
+      {
+        "strategy": "Hybrid-Adaptive (ours)",
+        "delivery_rate": 0.95,
+        "avg_latency_s": 139.73684210526315,
+        "transmissions": 171,
+        "data_delivered_mb": 8550.0,
+        "network_utilization": 0.03498363338788871,
+        "mode_split": {
+          "cgr": 40,
+          "epidemic": 0
+        }
+      },
+      {
+        "strategy": "Hybrid-Adaptive (ours)",
+        "delivery_rate": 0.9,
+        "avg_latency_s": 153.33333333333334,
+        "transmissions": 159,
+        "data_delivered_mb": 7950.0,
+        "network_utilization": 0.03252864157119476,
+        "mode_split": {
+          "cgr": 40,
+          "epidemic": 0
+        }
+      },
+      {
+        "strategy": "Hybrid-Adaptive (ours)",
+        "delivery_rate": 0.95,
+        "avg_latency_s": 194.21052631578948,
+        "transmissions": 189,
+        "data_delivered_mb": 9450.0,
+        "network_utilization": 0.03866612111292962,
+        "mode_split": {
+          "cgr": 40,
+          "epidemic": 0
+        }
+      },
+      {
+        "strategy": "Hybrid-Adaptive (ours)",
+        "delivery_rate": 0.9,
+        "avg_latency_s": 225,
+        "transmissions": 180,
+        "data_delivered_mb": 9000.0,
+        "network_utilization": 0.036824877250409165,
+        "mode_split": {
+          "cgr": 40,
+          "epidemic": 0
+        }
+      },
+      {
+        "strategy": "Hybrid-Adaptive (ours)",
+        "delivery_rate": 0.875,
+        "avg_latency_s": 326.57142857142856,
+        "transmissions": 208,
+        "data_delivered_mb": 10400.0,
+        "network_utilization": 0.0425531914893617,
+        "mode_split": {
+          "cgr": 36,
+          "epidemic": 4
+        }
+      }
+    ]
+  },
+  "recovery_time_seconds": {
+    "naive": null,
+    "cgr": 185.625,
+    "epidemic": 865.3846153846154,
+    "hybrid": 786.9230769230769
+  }
+}
