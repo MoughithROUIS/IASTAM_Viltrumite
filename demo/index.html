@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Resilient LEO Routing — Live Demo</title>
+<meta name="description" content="Interactive replay and results for resilient LEO satellite routing: CGR vs. DTN flooding vs. a reliability-driven hybrid (Team Viltrumite, IASTAM 6.0).">
+<meta property="og:title" content="Resilient LEO Satellite Routing — Live Demo">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%B0%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header>
+  <h1>Resilient LEO Satellite Routing <span>— Live Demo</span></h1>
+  <div class="meta mono">TEAM VILTRUMITE · IASTAM 6.0 · TRACK 4 / PROBLEM 8</div>
+</header>
+
+<div class="layout">
+
+  <div class="panel map-wrap" id="mapWrap">
+    <div class="map-head">
+      <h2>32-satellite constellation — real SGP4 propagation, live contact graph</h2>
+      <div id="disruptionBadge" class="mono">⚠ DISRUPTION ACTIVE</div>
+    </div>
+    <canvas id="map" width="1000" height="520"></canvas>
+    <div class="legend">
+      <span><span class="dot" style="background:#4C72B0"></span> Satellite</span>
+      <span><span class="dot" style="background:#ffb454"></span> Ground station</span>
+      <span><span class="dot" style="background:#273456"></span> Active link</span>
+      <span><span class="dot" style="background:var(--cgr)"></span> Message (CGR hop)</span>
+      <span><span class="dot" style="background:var(--epidemic)"></span> Message (flood/epidemic)</span>
+    </div>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:18px;">
+    <div class="panel controls">
+      <div class="strategy-toggle">
+        <button data-strat="cgr" class="active">CGR-lite (predictive)</button>
+        <button data-strat="hybrid">Hybrid-Adaptive (ours)</button>
+      </div>
+      <div class="playbar">
+        <button id="playBtn">▶</button>
+        <input type="range" id="timeSlider" min="0" max="89" value="0">
+        <div id="timeLabel" class="mono">t=0</div>
+      </div>
+      <div style="display:flex; gap:6px;">
+        <button class="jumpBtn" id="jumpStart">⏮ Start</button>
+        <button class="jumpBtn" id="jumpDisruption">⚡ Jump to disruption</button>
+        <button class="jumpBtn" id="jumpEnd">⏭ Delivery</button>
+      </div>
+    </div>
+
+    <div class="panel telemetry">
+      <h2>Message telemetry</h2>
+      <div class="tele-row"><span class="k">Mode</span><span class="v" id="teleMode">—</span></div>
+      <div class="tele-row"><span class="k">Carrier node</span><span class="v" id="teleNode">—</span></div>
+      <div class="tele-row"><span class="k">Status</span><span class="v" id="teleStatus">—</span></div>
+      <div class="tele-row" id="relRow" style="flex-direction:column; align-items:stretch; gap:4px;">
+        <div style="display:flex; justify-content:space-between;"><span class="k">Reliability estimate R(t)</span><span class="v" id="teleReliability">—</span></div>
+        <div class="reliability-bar"><div class="reliability-fill" id="relFill" style="width:0%"></div></div>
+      </div>
+      <h2 style="margin-top:6px;">Event log</h2>
+      <div class="log" id="log"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="summary">
+  <div class="panel">
+    <h2>Results — mean ± std over 30 independent seeds, nominal conditions</h2>
+    <div class="table-scroll"><table class="metrics">
+      <thead><tr><th>Strategy</th><th>Delivery</th><th>Latency</th><th>Transmissions</th><th>Network utilization</th></tr></thead>
+      <tbody id="metricsBody"></tbody>
+    </table></div>
+    <canvas id="sweepChart" width="1000" height="360" style="width:100%;height:auto;margin-top:18px"></canvas>
+    <div class="note"><strong>How to read this page.</strong> The animation above replays <em>one</em> recorded example (one message, one random draw of failures) to show the decision logic. It is not statistics. Flooding is drawn in simplified form, and the controller re-evaluates R(t) at every step here, whereas in the experiments the mode is chosen once per message at injection. The table and the chart are the statistics: mean ± std over 30 independent seeds, same traffic for all strategies within a seed. <strong>Reading the chart:</strong> up to 40% extra failures CGR-lite and the hybrid are statistically indistinguishable. Between 50% and 70% the hybrid is clearly <em>worse</em> than CGR-lite (its threshold θ = 0.5 switches to flooding too early). They are equal at 80%. Only at 90% does the hybrid beat CGR-lite (40% vs 27%), tracking Epidemic; at 100% nothing can be delivered. The 50–100% range was added after the initial 0–40% runs. Code and results: <code>src/run_multiseed.py</code>, <code>results/multiseed_extended.json</code>.</div>
+  </div>
+</div>
+
+<script src="data/demo-data.js"></script>
+<script src="data/results-data.js"></script>
+<script src="assets/app.js"></script>
+
+<footer class="site-footer">Team Viltrumite · IASTAM 6.0 · Track 4, Problem 8 · Source code, tests and report: <a href="https://github.com/MoughithROUIS/IASTAM_Viltrumite" target="_blank" rel="noopener">github.com/MoughithROUIS/IASTAM_Viltrumite</a></footer>
+</body>
+</html>
