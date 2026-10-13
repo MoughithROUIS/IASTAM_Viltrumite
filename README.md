@@ -132,11 +132,11 @@ Of the five Phase-3 items committed to at the mid-review stage:
 
 | Item | Status |
 |---|---|
-| Realistic orbital dynamics (SGP4 + Earth occlusion) | ✅ Delivered |
-| Larger-scale validation (14 → 35 nodes) | 🟡 Partial — not yet Starlink-scale (hundreds of satellites); the pairwise occlusion check is O(n²) and untested at that size |
-| Threshold learning (online/continuous) | ❌ Not delivered — threshold was recalibrated manually (0.85 → 0.5), not learned |
-| Hardware-aware evaluation (energy/storage) | ❌ Not delivered |
-| Cross-validation vs ns-3/OMNeT++ | ❌ Not delivered |
+| Realistic orbital dynamics (SGP4 + Earth occlusion) |  Delivered |
+| Larger-scale validation (14 → 35 nodes) |  Partial — not yet Starlink-scale (hundreds of satellites); the pairwise occlusion check is O(n²) and untested at that size |
+| Threshold learning (online/continuous) |  Not delivered — threshold was recalibrated manually (0.85 → 0.5), not learned |
+| Hardware-aware evaluation (energy/storage) |  Not delivered |
+| Cross-validation vs ns-3/OMNeT++ |  Not delivered |
 
 Full discussion in `report/paper_final.pdf`, Section IV-G.
 
