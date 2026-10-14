@@ -33,7 +33,7 @@ controller — validated on a realistic, SGP4-propagated orbital simulation.
 
 ## Live demo
 
-**https://YOUR-PROJECT.vercel.app** &nbsp;← replace with your Vercel URL after the first deployment (see *Deploy the demo to Vercel* below).
+**[https://YOUR-PROJECT.vercel.app](https://iastamviltrumite-demo.vercel.app/)** &nbsp;← replace with your Vercel URL after the first deployment (see *Deploy the demo to Vercel* below).
 
 The demo is a plain static website hosted on Vercel; it does not depend on any AI platform. It replays one recorded routing trace
 (CGR-lite vs. the hybrid controller during an outage) and shows the 30-seed statistics. The animation is a single example, not
